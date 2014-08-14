@@ -1,0 +1,14 @@
+data<-read.table("household_power_consumption.txt", header=T, sep=";")
+attach(data)
+
+Date<-as.Date(Date)
+class(Date)
+
+data_sub<-subset(data, Date=="1/2/2007" | Date=="2/2/2007")
+head(data_sub)
+Global_active_power<-as.numeric(Global_active_power)
+
+png(file="plot1.png")
+hist(Global_active_power/1000, col="red", 
+xlab="Global active power", main="Global active power")
+dev.off()
